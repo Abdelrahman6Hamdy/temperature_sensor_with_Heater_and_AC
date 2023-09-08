@@ -1,0 +1,29 @@
+
+#include <util/delay.h>
+
+#include "ADC_conf.h"
+#include "ADC_Init.h"
+#include "ADC_Priv.h"
+#include "STD_TYPES.h"
+#include "BIT_MATHS.h"
+
+
+
+int main (void)
+
+{
+	u16 Local_u16DigitalVal;
+	u16 Local_u16AnalogVal;
+	ADC_voidInit();
+
+
+	while(1)
+	{
+		Local_u16DigitalVal = ADC_u8GetDigitalValueSynchronous(ADC_u8_CHANNEL_0);
+		Local_u16AnalogVal = ((u32)Local_u16DigitalVal * 5000UL) / 1024;
+	}
+	return 0;
+
+}
+
+
